@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --black:  #0a0a0f;
+  --yellow: #FFD700;
+  --cyan:   #00FFFF;
+  --dim:    #444466;
+  --white:  #FFFFFF;
+  --card-bg: #0f0f1a;
+}
+
+html, body {
+  background: var(--black);
+  color: var(--white);
+  font-family: 'Press Start 2P', monospace;
+  min-height: 100%;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.12) 2px,
+    rgba(0, 0, 0, 0.12) 4px
+  );
+  pointer-events: none;
+  z-index: 100;
+}
+
+#shell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 60px 24px 40px;
+  gap: 40px;
+}
+
+/* ── Header ── */
+
+#insert-coin {
+  font-size: 9px;
+  color: var(--yellow);
+  letter-spacing: 4px;
+  animation: blink 1s step-end infinite;
+}
+
+#title {
+  font-size: clamp(22px, 6vw, 52px);
+  color: var(--yellow);
+  letter-spacing: 6px;
+  text-align: center;
+  line-height: 1.5;
+  text-shadow:
+    0 0 20px var(--yellow),
+    0 0 60px rgba(255, 215, 0, 0.35);
+}
+
+#header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+#select-label {
+  font-size: 10px;
+  color: var(--cyan);
+  letter-spacing: 5px;
+  text-shadow: 0 0 10px var(--cyan);
+  animation: blink 1.4s step-end infinite;
+}
+
+/* ── Game grid ── */
+
+#game-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+  width: 100%;
+  max-width: 960px;
+}
+
+.game-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 28px 24px;
+  width: 200px;
+  background: var(--card-bg);
+  border: 2px solid var(--cyan);
+  box-shadow:
+    0 0 10px rgba(0, 255, 255, 0.25),
+    inset 0 0 20px rgba(0, 255, 255, 0.04);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.1s, border-color 0.1s, box-shadow 0.1s;
+}
+
+.game-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--yellow);
+  box-shadow:
+    0 0 20px rgba(255, 215, 0, 0.45),
+    inset 0 0 20px rgba(255, 215, 0, 0.06);
+}
+
+.game-card:hover .play-btn {
+  background: var(--yellow);
+  color: var(--black);
+  border-color: var(--yellow);
+}
+
+.game-name {
+  font-size: clamp(9px, 2vw, 11px);
+  color: var(--yellow);
+  letter-spacing: 2px;
+  text-align: center;
+  text-shadow: 0 0 8px var(--yellow);
+}
+
+.game-desc {
+  font-size: 7px;
+  color: var(--dim);
+  letter-spacing: 1px;
+  text-align: center;
+  line-height: 1.8;
+}
+
+.play-btn {
+  margin-top: 6px;
+  padding: 8px 18px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--cyan);
+  background: transparent;
+  border: 2px solid var(--cyan);
+  pointer-events: none;
+  transition: background 0.1s, color 0.1s, border-color 0.1s;
+}
+
+/* ── Footer ── */
+
+#footer {
+  margin-top: auto;
+  font-size: 7px;
+  color: var(--dim);
+  letter-spacing: 3px;
+}
+
+/* ── Animations ── */
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
